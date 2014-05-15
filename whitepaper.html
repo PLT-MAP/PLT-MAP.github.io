@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Map : Whitepaper" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Map</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/PLT-MAP/map">View on GitHub</a>
+
+          <h1 id="project_title">Map</h1>
+          <h2 id="project_tagline">Whitepaper</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/PLT-MAP/map/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/PLT-MAP/map/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="table-of-contents" class="anchor" href="#table-of-contents"><span class="octicon octicon-link"></span></a>Table of Contents</h1>
+
+<ol>
+<li>
+<a href="#whitepaper">Whitepaper</a>
+<br>    1.1 <a href="#graphs-101">Graphs 101</a></p>
+<br>    1.2 <a href="#how-map-makes-graphing-easier">How MAP Makes Graphing Easier</a>
+<br>    1.3 <a href="#intended-users">Intended Users</a>
+<br>    1.4 <a href="#properties-of-language-and-buzzwords">Properties of Language and Buzzwords</a>
+<br>    1.5 <a href="#conclusion">Conclusion</a>
+</li>
+<li><a href="#contributors">Contributors</a></li>
+</ol><h2>
+<a name="whitepaper" class="anchor" href="#whitepaper"><span class="octicon octicon-link"></span></a>Whitepaper</h2>
+
+<h3>
+<a name="graphs-101" class="anchor" href="#graphs-101"><span class="octicon octicon-link"></span></a>Graphs 101</h3>
+
+<p>Graphs are discrete structures that are made up of nodes (or vertices) and edges that connect these nodes. Graphs can have several properties such as directional edges, multiple edges connecting the same two nodes, and loops. In our language MAP, graphs can have any number of properties that the user desires.</p>
+
+<p>Here is a simple tutorial that will go over the different properties:
+Graphs can be undirected which means that the edges have no direction. This is often signified by a simple straight or curved line. In the example below, A can go to B and B can go to A.
+<img src="http://i.imgur.com/4VVdyxc.png" alt="">
+Graphs can have multiple edges connecting the same nodes. C and D can travel between each other in three different ways.
+<img src="http://i.imgur.com/9vxrBrX.png" alt="">
+Graphs can have a loop which is an edge that connects a node to itself. A node can even have multiple loops. A and B have loops. D has two loops.
+<img src="http://i.imgur.com/PzrNxcC.png" alt="">
+Instead of undirected graphs, graphs can also be directed. This is often signified by an arrow. Thus, there is a restriction on the edge so that it can only travel in one direction. For instance, A is a directed edge to C because A can go to C, but C cannot go to A. The diagram below is also an example of a mixed graph because it contains directed and undirected edges.
+<img src="http://i.imgur.com/2HhT0NJ.png" alt="">
+Graph models can solve various types of problems in a wide range of fields. To name a few, graphs can be used to denote how different species compete, how employers interact, how researchers collaborate, and how computer networks connect. Graphs can find the number of colors needed to color the regions of a map and find the shortest path between two cities. There are a variety of graph algorithms that a user of our language can experiment with and create.</p>
+
+<h3>
+<a name="how-map-makes-graphing-easier" class="anchor" href="#how-map-makes-graphing-easier"><span class="octicon octicon-link"></span></a>How MAP Makes Graphing Easier</h3>
+
+<p>Even with an elementary knowledge of Graph Theory, programmers tend to find graph representations of data to be abstract and difficult to visualize. Beginner programmers might shy away from graph programming because creating graphs from scratch involves choosing which data structure with which to represent the graph (arrays, lists, etc.), constructing Node and Edge classes that have their own attributes, and having these Nodes and Edges interact in the Graph.</p>
+
+<h4>
+<a name="easy" class="anchor" href="#easy"><span class="octicon octicon-link"></span></a>Easy</h4>
+
+<p>MAP takes the responsibility of Graph implementation away from the programmer, as it has built-in data types of Node, Edge, and Graph; the programmer now only needs to follow MAP documentation to insert data into Nodes and Edges and then insert them into the Graphs. </p>
+
+<h4>
+<a name="quick-and-multipurpose" class="anchor" href="#quick-and-multipurpose"><span class="octicon octicon-link"></span></a>Quick and Multipurpose</h4>
+
+<p>MAP is also useful to more experienced programmers who want a quick implementation but do not want to sacrifice flexibility in terms of what the Graph can do. For example, MAP allows programmers to customize whether their Graph is directed or undirected (through MAP's DirEdge and UndirEdge datatypes) and what kind of attributes that the built-in data types store (MAP stores attributes of a datatype like Node, Graph, or Edge in associative arrays that allow the programmer to access the data with key-value lookup).</p>
+
+<h4>
+<a name="result-oriented" class="anchor" href="#result-oriented"><span class="octicon octicon-link"></span></a>Result-oriented</h4>
+
+<p>By clearing the initial hurdles of graph programming, MAP allows programmers to concentrate on deriving meaningful results from their data. While users can define their own functions, MAP has various standard-library functions that tend to be useful when dealing with Graphs, such as functions that find the shortest path between two Nodes based on an attribute (Graph.findShortestPath(node1, node2, attribute)), tests if two paths are equal (Path.equals(Path)), and determines if two Nodes are directly connected with an Edge in a Graph (Graph.adjacent(node1, node2)). </p>
+
+<h3>
+<a name="intended-users" class="anchor" href="#intended-users"><span class="octicon octicon-link"></span></a>Intended Users</h3>
+
+<p>Ideally this language will target those who wish to represent trips using graphs, but it can also be generalized to users who wish to solve graphing problems. The intended users of this program are programmers of any level that wish to manipulate graph data types. The language is simple enough that a beginner will easily be able to learn how to run basic programs using graphs, but also complex enough that a more experienced programmer can run sophisticated algorithms. The user will never need to know how the graph is created or manipulated, and will only need to focus on working with a set of built in functions in our language, or writing their own functions to meet their specific needs.</p>
+
+<h3>
+<a name="properties-of-language-and-buzzwords" class="anchor" href="#properties-of-language-and-buzzwords"><span class="octicon octicon-link"></span></a>Properties of Language and Buzzwords</h3>
+
+<p>The purpose of MAP is to make graph programming easier, and more approachable for beginners. Because of this, we did our best to make the language follow these guidelines:</p>
+
+<h4>
+<a name="simple-and-familiar" class="anchor" href="#simple-and-familiar"><span class="octicon octicon-link"></span></a>Simple and Familiar</h4>
+
+<p>MAP coding is simple and familiar, as we tried to model the syntax of existing languages so users will not have to adjust too much to the syntax. MAP abstracts away some of the data structures coding from the programmer’s end, allowing the user to focus on implementing algorithms that work with the graph, instead of getting bogged down in the set-up of the graph. Our language is easy for beginners because we do a lot of the work of graph programming behind the scenes for the user. </p>
+
+<h4>
+<a name="intuitive" class="anchor" href="#intuitive"><span class="octicon octicon-link"></span></a>Intuitive</h4>
+
+<p>The MAP language is intuitive. MAP is an imperative language, much like C, C++, and Java, which makes it instinctive to use for many programmers, or people with very little introduction to programming. It is also similar to some scripting languages, as we modeled some functionality off of Python, and our target language is Python as well. </p>
+
+<h4>
+<a name="reusable" class="anchor" href="#reusable"><span class="octicon octicon-link"></span></a>Reusable</h4>
+
+<p>MAP allows for the ability to create functions, which allows the user to write reusable algorithms, or abstract pieces of code to be used over again. Abstracting commonly used code into functions helps with debugging, and keeping programs shorter, but most importantly makes the code in the functions generalized enough to be used again easily.</p>
+
+<h3>
+<a name="conclusion" class="anchor" href="#conclusion"><span class="octicon octicon-link"></span></a>Conclusion</h3>
+
+<p>MAP is a simple, intuitive and reusable solution for various graph programming applications. It can help its users to focus on creating elegant graphing tools by abstracting away many low-level graph implementation details. MAP makes graph programming easier and accessible to any level of programmer. </p>
+
+<h2>
+<a name="contributors" class="anchor" href="#contributors"><span class="octicon octicon-link"></span></a>Contributors</h2>
+
+<p>Serena Simkus - Project Manager (<a href="https://github.com/serenasimkus" class="user-mention">@serenasimkus</a>)                                                  </p>
+
+<p>Sandya Sankarram - Language Guru                                                                 </p>
+
+<p>Alex Merkulov - System Architect                                                                 </p>
+
+<p>Alfred Tan - System Integrator                                                                   </p>
+
+<p>Tommy Inouye - Verification &amp; Validation Person</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Map maintained by <a href="https://github.com/PLT-MAP">PLT-MAP</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
+
